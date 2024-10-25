@@ -1,7 +1,7 @@
 package com.rieg.plugins
 
-import com.rieg.repository.TwitchChannelRepository
-import com.rieg.repository.TwitchChannelRepositoryImpl
+import com.rieg.repository.ChannelRepository
+import com.rieg.repository.ChannelRepositoryImpl
 import com.rieg.routes.channel.channelRoutes
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -13,7 +13,7 @@ import io.ktor.server.routing.*
 const val API_url = "/api"
 
 fun Application.configureRouting() {
-    val twitchChannelRepository: TwitchChannelRepository = TwitchChannelRepositoryImpl()
+    val channelRepository: ChannelRepository = ChannelRepositoryImpl()
     install(StatusPages) {
         exception<Throwable> { call, cause ->
             call.respondText(text = "500: $cause" , status = HttpStatusCode.InternalServerError)
@@ -22,7 +22,7 @@ fun Application.configureRouting() {
     routing {
         frontend()
         route(API_url) {
-            channelRoutes(twitchChannelRepository)
+            channelRoutes(channelRepository)
         }
     }
 }
