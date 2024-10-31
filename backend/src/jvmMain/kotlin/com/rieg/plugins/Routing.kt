@@ -1,7 +1,7 @@
 package com.rieg.plugins
 
-import com.rieg.repository.ChannelRepository
-import com.rieg.repository.ChannelRepositoryImpl
+import com.rieg.repository.channel.ChannelRepository
+import com.rieg.repository.channel.ChannelRepositoryImpl
 import com.rieg.routes.channel.channelRoutes
 import io.ktor.http.*
 import io.ktor.server.application.*
