@@ -6,6 +6,5 @@ import kotlinx.serialization.Serializable
 data class Channel(
     val twitchId: String,
     val twitchUsername: String,
-    val avatarUrl: String,
     val sevenTvId: String
 )
