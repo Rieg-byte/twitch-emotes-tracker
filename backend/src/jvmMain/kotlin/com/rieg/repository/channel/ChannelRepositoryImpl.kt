@@ -11,17 +11,17 @@ class ChannelRepositoryImpl : ChannelRepository {
         Channels.selectAll().map {
             Channel(
                 twitchId = it[Channels.twitchId],
-                twitchUsername = it[Channels.twitchUsername],
-                sevenTvId = it[Channels.sevenTvId]
+                twitchUsername = it[Channels.twitchUsername]
             )
         }
     }
 
     override fun addChannel(channel: Channel) {
-        Channels.insert {
-            it[twitchId] = channel.twitchId
-            it[twitchUsername] = channel.twitchUsername
-            it[sevenTvId] = channel.sevenTvId
+        transaction {
+            Channels.insert {
+                it[twitchId] = channel.twitchId
+                it[twitchUsername] = channel.twitchUsername
+            }
         }
     }
 }
